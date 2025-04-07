@@ -20,5 +20,5 @@ model = RandomForestRegressor(**best_params, random_state=246)
 model.fit(X_train_scaled, y_train.values.ravel())
 
 # Sauvegarder le modèle entraîné avec joblib
-model_path = os.path.join(models_path, 'models', 'trained_model.joblib')
+model_path = os.path.join(models_path, 'trained_model.joblib')
 joblib.dump(model, model_path)
