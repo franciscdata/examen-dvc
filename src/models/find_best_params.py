@@ -31,3 +31,5 @@ best_params = grid_search.best_params_
 # Sauvegarder les meilleurs paramètres avec joblib
 best_params_path = os.path.join(models_path, 'best_params.joblib')
 joblib.dump(best_params, best_params_path)
+
+print("Meilleurs paramètres trouvés :", best_params)
