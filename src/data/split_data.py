@@ -10,7 +10,7 @@ data_processed_path = 'data/processed'
 df = pd.read_csv(os.path.join(data_raw_path, 'raw.csv'))
 
 # Définir la variable cible et les features
-X = df.drop('silica_concentrate', axis=1)
+X = df.drop(['date', 'silica_concentrate'], axis=1)
 y = df['silica_concentrate']
 
 # Split des données
