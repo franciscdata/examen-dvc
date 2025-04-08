@@ -6,3 +6,8 @@ stages:
     - src/data/split_data.py
     outs:
     - data/processed
+  normalize:
+    cmd: python src/data/normalize_data.py
+    deps:
+    - data/processed
+    - src/data/normalize_data.py

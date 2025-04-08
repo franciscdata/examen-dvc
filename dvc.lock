@@ -18,3 +18,15 @@ stages:
       md5: d46810a61809e2caf7d7880eec401c42.dir
       size: 298137
       nfiles: 4
+  normalize:
+    cmd: python src/data/normalize_data.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 58018ccc93d5cb560b8d82accc4c37b0.dir
+      size: 583686
+      nfiles: 6
+    - path: src/data/normalize_data.py
+      hash: md5
+      md5: db76550b582f03195276fd3aea85c8fe
+      size: 992
