@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.metrics import mean_squared_error, r2_score
-import joblib
+import pickle
 import json
 import os
 
@@ -14,8 +14,9 @@ X_test_scaled = pd.read_csv(os.path.join(data_processed_path, 'X_test_scaled.csv
 y_test = pd.read_csv(os.path.join(data_processed_path, 'y_test.csv'))
 
 # Charger le modèle entraîné avec joblib
-model_path = os.path.join(models_path, 'trained_model.joblib')
-model = joblib.load(model_path)
+model_path = os.path.join(models_path, 'trained_model.pkl')
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
 
 # Faire des prédictions sur l'ensemble de test
 y_pred = model.predict(X_test_scaled)
