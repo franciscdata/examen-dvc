@@ -3,26 +3,40 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestRegressor
 import pickle
 import os
+import yaml
 
 # Définir les chemins
 data_processed_path = 'data/processed'
 models_path = 'models'
+params_path = 'params.yaml'
+
+# Charger les paramètres depuis params.yaml
+with open(params_path, 'r') as f:
+    params = yaml.safe_load(f)
+grid_search_params = params['grid_search']
 
 # Charger les données d'entraînement normalisées
 X_train_scaled = pd.read_csv(os.path.join(data_processed_path, 'X_train_scaled.csv'))
 y_train = pd.read_csv(os.path.join(data_processed_path, 'y_train.csv'))
 
-# Définir le modèle et la grille de paramètres
-model = RandomForestRegressor(random_state=246)
-param_grid = {
-    'n_estimators': [100, 200, 300],
-    'max_depth': [None, 5, 10],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
-}
+# Définir le modèle
+model_name = grid_search_params['model']
+if model_name == 'RandomForestRegressor':
+    model = RandomForestRegressor(random_state=grid_search_params['random_state'])
+else:
+    raise ValueError(f"Modèle non supporté : {model_name}")
+
+# Définir la grille de paramètres depuis params.yaml
+param_grid = grid_search_params['param_grid']
 
 # Effectuer la recherche par grille
-grid_search = GridSearchCV(model, param_grid, cv=3, scoring='neg_mean_squared_error', n_jobs=-1)
+grid_search = GridSearchCV(
+    model,
+    param_grid,
+    cv=grid_search_params['cv'],
+    scoring=grid_search_params['scoring'],
+    n_jobs=grid_search_params['n_jobs']
+    )
 grid_search.fit(X_train_scaled, y_train.values.ravel())
 
 # Récupérer les meilleurs paramètres

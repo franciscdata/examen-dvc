@@ -7,10 +7,14 @@ stages:
       hash: md5
       md5: 617b56af2992376d5c3e91ad80823898
       size: 333757
+    - path: params.yaml
+      hash: md5
+      md5: b5b236f63449f493e643d5725cd2f463
+      size: 391
     - path: src/data/split_data.py
       hash: md5
-      md5: af78ebf2265de17cfab5cf3151dfba7b
-      size: 877
+      md5: edad7fcab8d18e5944edb8a775fa193f
+      size: 1132
     outs:
     - path: data/processed/X_test.csv
       hash: md5
@@ -63,10 +67,14 @@ stages:
       hash: md5
       md5: 0a7ff7c4fa1ecef56af28de1ce179c13
       size: 27409
+    - path: params.yaml
+      hash: md5
+      md5: b5b236f63449f493e643d5725cd2f463
+      size: 391
     - path: src/models/find_best_params.py
       hash: md5
-      md5: f732eda565e99be089ad7202db2afd31
-      size: 1200
+      md5: d3c5cc39c56e23062082b13423b60b5b
+      size: 1577
     outs:
     - path: models/best_params.pkl
       hash: md5
