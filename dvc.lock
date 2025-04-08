@@ -13,20 +13,35 @@ stages:
       md5: af78ebf2265de17cfab5cf3151dfba7b
       size: 877
     outs:
-    - path: data/processed
+    - path: data/processed/X_test.csv
       hash: md5
-      md5: d46810a61809e2caf7d7880eec401c42.dir
-      size: 298137
-      nfiles: 4
+      md5: 0773b0b2a9a97c9b8840b3f4b86a9b6e
+      size: 52928
+    - path: data/processed/X_train.csv
+      hash: md5
+      md5: b9e08497ad16ccf60aaeefdca5948de7
+      size: 210983
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: 439e94c2bacebe72af077779541bfb21
+      size: 6817
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: 0a7ff7c4fa1ecef56af28de1ce179c13
+      size: 27409
   normalize:
     cmd: python src/data/normalize_data.py
     deps:
-    - path: data/processed
-      hash: md5
-      md5: 58018ccc93d5cb560b8d82accc4c37b0.dir
-      size: 583686
-      nfiles: 6
     - path: src/data/normalize_data.py
       hash: md5
       md5: db76550b582f03195276fd3aea85c8fe
       size: 992
+    outs:
+    - path: data/processed/X_test_scaled.csv
+      hash: md5
+      md5: 0d90aef235c95059f9245e952f36f41f
+      size: 57295
+    - path: data/processed/X_train_scaled.csv
+      hash: md5
+      md5: cf08dad3687b7a38e7b4e7788fa2ac23
+      size: 228254
