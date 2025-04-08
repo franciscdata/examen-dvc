@@ -5,6 +5,7 @@ import os
 # Définir les chemins
 data_raw_path = 'data/raw'
 data_processed_path = 'data/processed'
+os.makedirs(data_processed_path, exist_ok=True)
 
 # Charger le dataset
 df = pd.read_csv(os.path.join(data_raw_path, 'raw.csv'))
