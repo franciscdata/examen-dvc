@@ -36,3 +36,8 @@ scores = {
 scores_path = os.path.join(metrics_path, 'scores.json')
 with open(scores_path, 'w') as f:
     json.dump(scores, f)
+
+# Créer un DataFrame avec les prédictions et les valeurs réelles
+predictions_df = pd.DataFrame({'predicted_silica_concentrate': y_pred, 'actual_silica_concentrate': y_test['silica_concentrate']})
+predictions_path = os.path.join(data_processed_path, 'prediction.csv')
+predictions_df.to_csv(predictions_path, index=False)
