@@ -3,11 +3,10 @@ stages:
   split:
     cmd: python ./src/data/split_data.py
     deps:
-    - path: data/raw
+    - path: data/raw/raw.csv
       hash: md5
-      md5: 0b9b0498ef0a1999f3141f0c8cd61a49.dir
-      size: 333774
-      nfiles: 2
+      md5: 617b56af2992376d5c3e91ad80823898
+      size: 333757
     - path: src/data/split_data.py
       hash: md5
       md5: af78ebf2265de17cfab5cf3151dfba7b
@@ -32,6 +31,14 @@ stages:
   normalize:
     cmd: python src/data/normalize_data.py
     deps:
+    - path: data/processed/X_test.csv
+      hash: md5
+      md5: 0773b0b2a9a97c9b8840b3f4b86a9b6e
+      size: 52928
+    - path: data/processed/X_train.csv
+      hash: md5
+      md5: b9e08497ad16ccf60aaeefdca5948de7
+      size: 210983
     - path: src/data/normalize_data.py
       hash: md5
       md5: db76550b582f03195276fd3aea85c8fe

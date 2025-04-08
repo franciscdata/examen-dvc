@@ -2,7 +2,7 @@ stages:
   split:
     cmd: python ./src/data/split_data.py
     deps:
-    - data/raw
+    - data/raw/raw.csv
     - src/data/split_data.py
     outs:
     - data/processed/X_train.csv
@@ -12,6 +12,8 @@ stages:
   normalize:
     cmd: python src/data/normalize_data.py
     deps:
+    - data/processed/X_train.csv
+    - data/processed/X_test.csv
     - src/data/normalize_data.py
     outs:
     - data/processed/X_train_scaled.csv
