@@ -23,6 +23,7 @@ stages:
     deps:
     - data/processed/X_train_scaled.csv
     - data/processed/y_train.csv
+    - src/models/find_best_params.py
     outs:
     - models/best_params.pkl
   training:
@@ -31,6 +32,7 @@ stages:
     - data/processed/X_train_scaled.csv
     - data/processed/y_train.csv
     - models/best_params.pkl
+    - src/models/train_model.py
     outs:
     - models/trained_model.pkl
   evaluate:
@@ -39,6 +41,7 @@ stages:
     - data/processed/X_test_scaled.csv
     - data/processed/y_test.csv
     - models/trained_model.pkl
+    - src/models/evaluate_model.py
     outs:
     - data/processed/prediction.csv
     metrics:
