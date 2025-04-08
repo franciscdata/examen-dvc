@@ -13,7 +13,8 @@ y_train = pd.read_csv(os.path.join(data_processed_path, 'y_train.csv'))
 
 # Charger les meilleurs paramètres
 best_params_path = os.path.join(models_path, 'best_params.pkl')
-best_params = pickle.load(best_params_path)
+with open(best_params_path, 'rb') as f:
+    best_params = pickle.load(f)
 
 # Initialiser et entraîner le modèle avec les meilleurs paramètres
 model = RandomForestRegressor(**best_params, random_state=246)
@@ -21,4 +22,5 @@ model.fit(X_train_scaled, y_train.values.ravel())
 
 # Sauvegarder le modèle entraîné
 model_path = os.path.join(models_path, 'trained_model.pkl')
-pickle.dump(model, model_path)
+with open(model_path, 'wb') as f:
+    pickle.dump(model, f)

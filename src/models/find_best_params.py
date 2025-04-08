@@ -30,6 +30,7 @@ best_params = grid_search.best_params_
 
 # Sauvegarder les meilleurs paramètres
 best_params_path = os.path.join(models_path, 'best_params.pkl')
-pickle.dump(best_params, best_params_path)
+with open(best_params_path, 'wb') as f:
+    pickle.dump(best_params, f)
 
 print("Meilleurs paramètres trouvés :", best_params)
