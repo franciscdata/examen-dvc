@@ -1,5 +1,0 @@
-outs:
-- md5: 6cdd4e48744c4b3d6c1c08ff6cafb45b
-  size: 89
-  hash: md5
-  path: best_params.joblib
